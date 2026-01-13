@@ -1,23 +1,42 @@
 # MesloLGS NF Web Fonts
 
-This is simply the Meslo Nerd Font (MesloLGS NF) patched for Powerlevel10k in woff2 format for use on Chrome OS.
+MesloLGS Nerd Font (Powerlevel10k patched) in woff2 format, hosted for use in Chrome OS terminal where local font installation isn't possible.
 
-## Test
+## Demo
 
-Visit: https://greglamb.github.io/MesloLGSNF-web-fonts/index.html
+https://greglamb.github.io/MesloLGSNF-web-fonts/
 
-## Usage
+## Chrome OS Terminal Setup
 
-Visit: chrome-untrusted://terminal/html/nassh_preferences_editor.html
+1. Open terminal preferences: `chrome-untrusted://terminal/html/nassh_preferences_editor.html`
 
-Settings:
+2. Configure these settings:
+   - **Text font family:** `"MesloLGS NF", monospace`
+   - **Text font size:** 15
+   - **Text font smoothing:** antialiased
+   - **Line height padding size:** 0
+   - **Custom CSS (inline text):** Copy contents from [stylesheet.css](https://greglamb.github.io/MesloLGSNF-web-fonts/stylesheet.css)
 
-- Text font family: "MesloLGS NF", monospace
-- Text font size: 15
-- Text font smoothing: antialiased
-- Line height padding size: 0
-- Custom CSS (inline text): Copy/Paste the contents of https://greglamb.github.io/MesloLGSNF-web-fonts/stylesheet.css
+> **Note:** The "Custom CSS (URI)" option doesn't work - you must paste the stylesheet contents as inline text.
 
-## Development Notes
+## Building Fonts
 
-- Custom CSS (URI) should work, but it does not. Copying the inline text was the only way I could get it work.
+To rebuild the woff2 files from TTF sources:
+
+```bash
+cd fonts
+./buildwoff2.sh
+```
+
+Requires Node.js. The script will auto-install `ttf2woff2` via npm if not present.
+
+## Font Variants
+
+- Regular
+- Italic
+- Bold
+- Bold Italic
+
+## License
+
+See [fonts/MesloLGS NF License.txt](fonts/MesloLGS%20NF%20License.txt)

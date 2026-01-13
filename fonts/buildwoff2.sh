@@ -1,8 +1,18 @@
 #!/usr/bin/env bash
 
-npm install --global ttf2woff2
+# npm install --global ttf2woff2
 
-curl -fsSL "https://github.com/greglamb/dotfiles.fonts/raw/refs/heads/main/MesloLGS NF Regular.ttf" | ttf2woff2 > "MesloLGS-NF.woff2/MesloLGS NF Regular.woff2"
-curl -fsSL "https://github.com/greglamb/dotfiles.fonts/raw/refs/heads/main/MesloLGS NF Italic.ttf" | ttf2woff2 > "MesloLGS-NF.woff2/MesloLGS NF Italic.woff2"
-curl -fsSL "https://github.com/greglamb/dotfiles.fonts/raw/refs/heads/main/MesloLGS NF Bold.ttf" | ttf2woff2 > "MesloLGS-NF.woff2/MesloLGS NF Bold.woff2"
-curl -fsSL "https://github.com/greglamb/dotfiles.fonts/raw/refs/heads/main/MesloLGS NF Bold Italic.ttf" | ttf2woff2 > "MesloLGS-NF.woff2/MesloLGS NF Bold Italic.woff2"
+if ! command -v ttf2woff2 &> /dev/null; then
+  echo "ttf2woff2 not found, installing..."
+  npm install --global ttf2woff2
+fi
+
+fonts=("Regular" "Italic" "Bold" "Bold Italic")
+
+for font in "${fonts[@]}"; do
+  output="woff2/MesloLGS NF ${font}.woff2"
+  url="https://github.com/greglamb/dotfiles.fonts/raw/refs/heads/main/MesloLGS NF ${font}.ttf"
+  encoded_url=$(node -e "console.log(encodeURI('$url'))")
+  echo "Building ${output}"
+  curl -fsSL "${encoded_url}" | ttf2woff2 > "${output}"
+done
