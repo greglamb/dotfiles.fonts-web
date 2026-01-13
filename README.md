@@ -2,6 +2,8 @@
 
 MesloLGS Nerd Font (Powerlevel10k patched) in woff2 format, hosted for use in Chrome OS terminal where local font installation isn't possible.
 
+See [dotfiles.fonts](https://github.com/greglamb/dotfiles.fonts) for the TTF source.
+
 ## Demo
 
 https://greglamb.github.io/MesloLGSNF-web-fonts/
