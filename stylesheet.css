@@ -1,30 +1,30 @@
 @font-face {
-  font-family: 'MesloLGS NF';
-  src: url('https://greglamb.github.io/MesloLGSNF-web-fonts/fonts/woff2/MesloLGS\ NF\ Italic.woff2') format('woff2');
+  font-family: 'MesloLGS NF DF';
+  src: url('https://greglamb.github.io/dotfiles.fonts-web/fonts/woff2/MesloLGS\ NF\ DF\ Italic.woff2') format('woff2');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'MesloLGS NF';
-  src: url('https://greglamb.github.io/MesloLGSNF-web-fonts/fonts/woff2/MesloLGS\ NF\ Bold.woff2') format('woff2');
+  font-family: 'MesloLGS NF DF';
+  src: url('https://greglamb.github.io/dotfiles.fonts-web/fonts/woff2/MesloLGS\ NF\ DF\ Bold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'MesloLGS NF';
-  src: url('https://greglamb.github.io/MesloLGSNF-web-fonts/fonts/woff2/MesloLGS\ NF\ Bold\ Italic.woff2') format('woff2');
+  font-family: 'MesloLGS NF DF';
+  src: url('https://greglamb.github.io/dotfiles.fonts-web/fonts/woff2/MesloLGS\ NF\ DF\ Bold\ Italic.woff2') format('woff2');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'MesloLGS NF';
-  src: url('https://greglamb.github.io/MesloLGSNF-web-fonts/fonts/woff2/MesloLGS\ NF\ Regular.woff2') format('woff2');
+  font-family: 'MesloLGS NF DF';
+  src: url('https://greglamb.github.io/dotfiles.fonts-web/fonts/woff2/MesloLGS\ NF\ DF\ Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

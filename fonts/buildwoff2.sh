@@ -7,11 +7,14 @@ if ! command -v ttf2woff2 &> /dev/null; then
   npm install --global ttf2woff2
 fi
 
+# Tag of https://github.com/greglamb/dotfiles.fonts to build from
+version="v2.0.0"
+family="MesloLGS NF DF"
 fonts=("Regular" "Italic" "Bold" "Bold Italic")
 
 for font in "${fonts[@]}"; do
-  output="woff2/MesloLGS NF ${font}.woff2"
-  url="https://github.com/greglamb/dotfiles.fonts/raw/refs/heads/main/MesloLGS NF ${font}.ttf"
+  output="woff2/${family} ${font}.woff2"
+  url="https://github.com/greglamb/dotfiles.fonts/raw/refs/tags/${version}/${family} ${font}.ttf"
   encoded_url=$(node -e "console.log(encodeURI('$url'))")
   echo "Building ${output}"
   curl -fsSL "${encoded_url}" | ttf2woff2 > "${output}"
