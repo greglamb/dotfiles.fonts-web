@@ -10,16 +10,40 @@ https://greglamb.github.io/dotfiles.fonts-web/
 
 ## Chrome OS Terminal Setup
 
-1. Open terminal preferences: `chrome-untrusted://terminal/html/nassh_preferences_editor.html`
+Fresh-machine setup for the built-in ChromeOS Terminal.
 
-2. Configure these settings:
-   - **Text font family:** `"MesloLGS NF DF", monospace`
-   - **Text font size:** 15
-   - **Text font smoothing:** antialiased
-   - **Line height padding size:** 0
-   - **Custom CSS (inline text):** Copy contents from [stylesheet.css](https://greglamb.github.io/dotfiles.fonts-web/stylesheet.css)
+### Prerequisites
 
-> **Note:** The "Custom CSS (URI)" option doesn't work - you must paste the stylesheet contents as inline text.
+- Linux development environment enabled (**Settings → About ChromeOS → Developers → Linux development environment**)
+
+### Steps
+
+1. Open the **Terminal** app and start a **Linux (penguin)** session tab.
+2. With that tab focused, press **Ctrl+Shift+J** to open the DevTools console.
+   - If DevTools doesn't open, go to `chrome://inspect/#other`, find `terminal.html`, and click **inspect**.
+3. Copy the contents of [chromeos-terminal.js](https://greglamb.github.io/dotfiles.fonts-web/chromeos-terminal.js), paste them into the console, and press Enter.
+
+   The script sets:
+   - **font-family:** `"MesloLGS NF DF", monospace`
+   - **font-size:** 13
+   - **font-smoothing:** antialiased
+   - **line-height-padding-size:** 0
+   - **user-css-text:** the contents of [stylesheet.css](stylesheet.css)
+
+4. Verify in the Linux shell. You should see Powerline/Nerd Font glyphs, not boxes:
+
+   ```sh
+   printf '  \n'
+   ```
+
+The first load downloads about 5 MB per font file, so glyphs may take a moment to appear.
+
+### Notes
+
+- `term_` exists only in a terminal session tab's console. You'll get `ReferenceError: term_ is not defined` from the Terminal home/settings page or from a regular Chrome tab.
+- Settings persist and apply to all Terminal windows. To check them, run `term_.prefs_.exportAsJson()`.
+- The "Custom CSS (URI)" option doesn't work, so the script sets the CSS as inline text.
+- The old preferences editor (`chrome-untrusted://terminal/html/nassh_preferences_editor.html`) is blank on newer ChromeOS builds.
 
 ## What changes in 2.1.0
 
@@ -27,7 +51,7 @@ Upstream 2.1.0 fills gaps Nerd Fonts leaves with Noto symbols and colour emoji; 
 
 ## Upgrading from 1.x
 
-The upstream 2.0.0 release renamed the family from `MesloLGS NF` to `MesloLGS NF DF`, and this repo moved from `MesloLGSNF-web-fonts` to `dotfiles.fonts-web`. Replace the old custom CSS with the current [stylesheet.css](https://greglamb.github.io/dotfiles.fonts-web/stylesheet.css) and change the text font family to `"MesloLGS NF DF", monospace`.
+The upstream 2.0.0 release renamed the family from `MesloLGS NF` to `MesloLGS NF DF`, and this repo moved from `MesloLGSNF-web-fonts` to `dotfiles.fonts-web`. The old font URLs no longer resolve. Re-run [chromeos-terminal.js](https://greglamb.github.io/dotfiles.fonts-web/chromeos-terminal.js) as described above; it overwrites the old font family and custom CSS.
 
 ## Building Fonts
 
