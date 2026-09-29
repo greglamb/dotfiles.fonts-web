@@ -38,10 +38,24 @@ Fresh-machine setup for the built-in ChromeOS Terminal.
 
 The first load downloads about 5 MB per font file, so glyphs may take a moment to appear.
 
+### Exporting Settings
+
+To export your current Terminal settings, run this in the same console:
+
+```js
+term_.prefs_.exportAsJson();
+```
+
+It returns every setting that differs from the defaults. To copy the result to the clipboard instead, wrap it in the DevTools `copy()` helper:
+
+```js
+copy(term_.prefs_.exportAsJson());
+```
+
 ### Notes
 
 - `term_` exists only in a terminal session tab's console. You'll get `ReferenceError: term_ is not defined` from the Terminal home/settings page or from a regular Chrome tab.
-- Settings persist and apply to all Terminal windows. To check them, run `term_.prefs_.exportAsJson()`.
+- Settings persist and apply to all Terminal windows.
 - The "Custom CSS (URI)" option doesn't work, so the script sets the CSS as inline text.
 - The old preferences editor (`chrome-untrusted://terminal/html/nassh_preferences_editor.html`) is blank on newer ChromeOS builds.
 
